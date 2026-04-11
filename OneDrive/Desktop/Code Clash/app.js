@@ -628,5 +628,24 @@ function init() {
   setInterval(autoSimulate, CONFIG.AUTO_EVENT_INTERVAL_MS);
 }
 
+// Event delegation
+document.addEventListener('click', function(e) {
+  const tgt = e.target.closest('[data-tab],[data-mode],[data-event],[data-action]');
+  if (!tgt) return;
+  
+  if (tgt.dataset.tab) switchTab(tgt.dataset.tab);
+  if (tgt.dataset.mode) setArm(tgt.dataset.mode);
+  if (tgt.dataset.event) triggerEvent(tgt.dataset.event);
+  if (tgt.dataset.action) {
+    if (tgt.dataset.action === 'dismiss') dismissAnomaly();
+    if (tgt.dataset.action === 'clear') clearFeed();
+    if (tgt.dataset.action === 'clear-all') clearFeed();
+    if (tgt.dataset.action === 'face-scan') startFaceScan();
+  }
+  
+  // FP scanner
+  if (tgt.id === 'fp-scanner') startFingerprint();
+});
+
 // Run when DOM is ready
 document.addEventListener('DOMContentLoaded', init);
