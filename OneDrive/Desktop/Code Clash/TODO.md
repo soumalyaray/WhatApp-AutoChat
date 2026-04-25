@@ -6,4 +6,4 @@
 - [x] Step 3: Update style.css - glassmorphism cards, gradient accents, smooth tab trans, mobile grids
 - [x] Step 4: Test reload (Ctrl+R), check localhost:8000 tabs/switches/mobile
 ## Complete
-- [ ] attempt_completion
+- [ ] attempt_completion then run the code
